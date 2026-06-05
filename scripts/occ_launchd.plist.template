@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+  "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>local.occ.scheduler</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/usr/bin/env</string>
+    <string>python3</string>
+    <string>__OCC_ROOT__/scripts/occ_scheduler.py</string>
+    <string>--loop</string>
+    <string>--manage-disablesleep</string>
+    <string>--config-file</string>
+    <string>/Library/Application Support/occ/config.json</string>
+    <string>--interval-seconds</string>
+    <string>5</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>__OCC_ROOT__</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>OCC_ROOT</key>
+    <string>__OCC_ROOT__</string>
+    <key>MAC_AWAKE_BLOCK_DAYS</key>
+    <string>none</string>
+    <key>MAC_AWAKE_BLOCK_START</key>
+    <string>07:00</string>
+    <key>MAC_AWAKE_BLOCK_END</key>
+    <string>18:00</string>
+    <key>MAC_AWAKE_ENABLED</key>
+    <string>1</string>
+    <key>MAC_AWAKE_MANAGE_DISABLESLEEP</key>
+    <string>1</string>
+    <key>MAC_AWAKE_CAFFEINATE_FLAGS</key>
+    <string>-ims</string>
+    <key>MAC_AWAKE_SLEEP_WHEN_INACTIVE</key>
+    <string>0</string>
+    <key>MAC_AWAKE_INTERVAL_SECONDS</key>
+    <string>5</string>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>StandardOutPath</key>
+  <string>/Library/Logs/occ-scheduler.out.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Library/Logs/occ-scheduler.err.log</string>
+</dict>
+</plist>

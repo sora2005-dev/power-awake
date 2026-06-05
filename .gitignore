@@ -1,0 +1,12 @@
+.DS_Store
+*.log
+*.pid
+*.swp
+__pycache__/
+build/
+dist/
+DerivedData/
+*.app/
+config.json
+state.json
+*.xcuserstate

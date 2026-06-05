@@ -4,28 +4,28 @@
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>local.occ.scheduler</string>
+  <string>local.powerawake.scheduler</string>
 
   <key>ProgramArguments</key>
   <array>
     <string>/usr/bin/env</string>
     <string>python3</string>
-    <string>__OCC_ROOT__/scripts/occ_scheduler.py</string>
+    <string>__POWER_AWAKE_ROOT__/scripts/power_awake_scheduler.py</string>
     <string>--loop</string>
     <string>--manage-disablesleep</string>
     <string>--config-file</string>
-    <string>/Library/Application Support/occ/config.json</string>
+    <string>/Library/Application Support/Power Awake/config.json</string>
     <string>--interval-seconds</string>
     <string>5</string>
   </array>
 
   <key>WorkingDirectory</key>
-  <string>__OCC_ROOT__</string>
+  <string>__POWER_AWAKE_ROOT__</string>
 
   <key>EnvironmentVariables</key>
   <dict>
-    <key>OCC_ROOT</key>
-    <string>__OCC_ROOT__</string>
+    <key>POWER_AWAKE_ROOT</key>
+    <string>__POWER_AWAKE_ROOT__</string>
     <key>MAC_AWAKE_BLOCK_DAYS</key>
     <string>none</string>
     <key>MAC_AWAKE_BLOCK_START</key>
@@ -52,8 +52,8 @@
   <true/>
 
   <key>StandardOutPath</key>
-  <string>/Library/Logs/occ-scheduler.out.log</string>
+  <string>/Library/Logs/power-awake-scheduler.out.log</string>
   <key>StandardErrorPath</key>
-  <string>/Library/Logs/occ-scheduler.err.log</string>
+  <string>/Library/Logs/power-awake-scheduler.err.log</string>
 </dict>
 </plist>

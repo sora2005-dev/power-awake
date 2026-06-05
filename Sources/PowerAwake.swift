@@ -1,7 +1,7 @@
 import AppKit
 import Foundation
 
-private let configURL = URL(fileURLWithPath: "/Library/Application Support/occ/config.json")
+private let configURL = URL(fileURLWithPath: "/Library/Application Support/Power Awake/config.json")
 
 struct AwakeConfig: Codable, Equatable {
   var enabled: Bool
@@ -247,8 +247,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
     statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     statusItem.button?.image = nil
-    statusItem.button?.title = "OCC"
-    statusItem.button?.toolTip = "OCC スリープ制御"
+    statusItem.button?.title = "Awake"
+    statusItem.button?.toolTip = "Power Awake スリープ制御"
     rebuildMenu()
 
     refreshTimer = Timer(timeInterval: 5, repeats: true) { [weak self] _ in
@@ -326,7 +326,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
   private func updateMenuItems() {
     statusItem.button?.image = nil
-    statusItem.button?.title = store.sleepGuard.isFailed ? "OCC!" : "OCC"
+    statusItem.button?.title = store.sleepGuard.isFailed ? "Awake!" : "Awake"
     updateStatusItem(powerItem, title: "電源", state: store.power)
     updateStatusItem(sleepGuardItem, title: "スリープ防止", state: store.sleepGuard)
     sleepPreventionItem?.state = store.config.enabled ? .on : .off

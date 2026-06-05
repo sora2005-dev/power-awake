@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-LABEL="local.occ.scheduler"
+LABEL="local.powerawake.scheduler"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-OCC_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-TEMPLATE="$OCC_ROOT/scripts/occ_launchd.plist.template"
+POWER_AWAKE_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+TEMPLATE="$POWER_AWAKE_ROOT/scripts/power_awake_launchd.plist.template"
 PLIST="/Library/LaunchDaemons/$LABEL.plist"
-STATE_DIR="/Library/Application Support/occ"
+STATE_DIR="/Library/Application Support/Power Awake"
 CONFIG_FILE="$STATE_DIR/config.json"
 INSTALL_WAKE_SCHEDULE=0
 
@@ -14,7 +14,7 @@ usage() {
   cat <<USAGE
 Usage: $0 [--install-wake-schedule]
 
-Installs the OCC scheduler as a root LaunchDaemon.
+Installs the Power Awake scheduler as a root LaunchDaemon.
 
 Default policy:
   - active only on AC power
@@ -57,7 +57,7 @@ if [[ ! -f "$TEMPLATE" ]]; then
 fi
 
 TMP="$(mktemp)"
-sed -e "s#__OCC_ROOT__#$OCC_ROOT#g" "$TEMPLATE" > "$TMP"
+sed -e "s#__POWER_AWAKE_ROOT__#$POWER_AWAKE_ROOT#g" "$TEMPLATE" > "$TMP"
 plutil -lint "$TMP" >/dev/null
 
 sudo install -o root -g wheel -m 644 "$TMP" "$PLIST"
@@ -108,6 +108,6 @@ sudo launchctl print "system/$LABEL" >/dev/null
 echo "  loaded: $LABEL"
 
 echo "status:"
-python3 "$OCC_ROOT/scripts/occ_scheduler.py" --status --manage-disablesleep --config-file "$CONFIG_FILE"
+python3 "$POWER_AWAKE_ROOT/scripts/power_awake_scheduler.py" --status --manage-disablesleep --config-file "$CONFIG_FILE"
 
-echo "OCC_LAUNCHD_INSTALLED"
+echo "POWER_AWAKE_LAUNCHD_INSTALLED"

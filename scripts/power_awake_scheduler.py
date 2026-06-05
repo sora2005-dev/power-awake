@@ -117,12 +117,12 @@ def time_in_range(value: dt.time, start: dt.time, end: dt.time) -> bool:
 
 def default_state_dir() -> Path:
   if platform.system() == "Darwin" and hasattr(os, "geteuid") and os.geteuid() == 0:
-    return Path("/Library/Application Support/occ")
-  return Path.home() / ".config" / "occ"
+    return Path("/Library/Application Support/Power Awake")
+  return Path.home() / ".config" / "power-awake"
 
 
 def default_config_file() -> Path:
-  return Path("/Library/Application Support/occ/config.json")
+  return Path("/Library/Application Support/Power Awake/config.json")
 
 
 def read_json(path: Path) -> dict[str, Any]:
